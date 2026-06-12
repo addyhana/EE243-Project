@@ -3,13 +3,13 @@ from pathlib import Path
 import cv2
 import numpy as np 
 
-VIDEO_PATH = "exp2video.mp4"
+VIDEO_PATH = "exp3video.mp4"
 
-OUTPUT_DIR = "experiments/input_frames/experiment2"
+OUTPUT_DIR = "experiments/input_frames/experiment3"
 
 # seconds 
-START_TIME = 40.0
-END_TIME = 50.0
+START_TIME = 4.5
+END_TIME = 10.5
 
 NUM_FRAMES = 60
 
