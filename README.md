@@ -8,7 +8,7 @@ Before experimenting with more challenging scenarios, we first tested SAM2 on th
 
 Below are 9 frames, evenly spaces out across the 60-frame sequence, segmenting the dog from its scene: 
 
-[insert photo grid here]
+![SAM2 Baseline Results](baseline_grid.png)
 
 ### Experiment 1 - Sensitivity to Initialization Noise
 
@@ -22,17 +22,31 @@ Test results show [...]
 
 The TED paper specifically argues that tracking visually similar objects is a challenging setting for many tracking methods, since appearance cues alone may be insufficient to maintain object identity. Although SAM2 performs strongly on video object segmentation tasks, we wanted to test how consistent it performs when the target object is surrounded by many visually similar distractors. This experiment stress-tests SAM2’s ability to preserve object identity when the scene contains multiple objects with nearly identical color, shape, and texture.
 
-Test results show [...]
+This experiment, along with experiment 3, required us to obtain our own training data, and convert it into an acceptable set for SAM2 to use. To do this, we downloaded [this video](https://youtu.be/psczv5XkcKg?si=g4LhWLARkb5mahUV) off of Youtube, and ran `extract_frames.py` to extract 60 frames across a selected clip of the original video (since usually, the entire video was too much context for our purposes). Then, we used [CVAT](https://www.cvat.ai/) to manually annotate the target object in the first frame, producing a segmentation mask that served as the initialization mask for SAM2. The resulting frame sequence and mask were then used as input to the tracking pipeline.
 
-[insert photo grid here again]
+For this experiment, we selected a green ball as the target object because green balls appeared to be the most common in the scene, making them the most likely candidates for identity confusion. Across the 60-frame sequence, SAM2 generally performs well, successfully maintaining the target object's identity despite the presence of numerous visually similar distractor objects (seen in the 9-frame summary grid below). However, upon closer inspection, there are several frames in which the segmentation mask slightly leaks into neighboring green balls that are in close proximity to the target. While these instances are relatively infrequent and do not significantly affect long-term tracking performance, they reveal a minor sensitivity to densely packed scenes containing multiple similar-looking objects.
+
+### Experiment 2 Results: 
+
+(target object is "orange")
+
+![SAM2 Experiment 2 Results](experiment2_grid.png)
+
+### Example Failure Case
+
+![Experiment 2 Example Frame](results/experiment2/overlays/00043.png)
 
 ### Experiment 3 - Sensitivity to Occlusion
 
 In real videos, target objects are often partially or fully occluded by other objects. To evaluate SAM2 under this condition, we tested a sequence where the target object becomes temporarily hidden and later reappears. Several of the challenging examples presented by Zhang et al. involve visually similar objects interacting and partially occluding one another. In these scenarios, TED is able to maintain object identity by utilizing motion representations learned from video diffusion models. Motivated by these results, we test how well SAM2 handles a related challenge in which the target object becomes temporarily occluded before reappearing.
 
-Test results show [...]
+Credit to this video is from [u/CommanderDinosaur](https://www.reddit.com/r/brisbane/comments/dacgo9/big_rig/) on Reddit, and same preprocessing steps were taken. 
 
-[insert photo grid here again]
+The video we chose for this experiment is a viral clip of a large big rig plane flying between multiple high-rises in a city landscape. Near the end of the video, the plane is fully occluded by one of the buildings before reappearing on the opposite side while maintaining a consistent trajectory and apparent speed. SAM2 successfully tracked and segmented the plane as it approached the occlusion, demonstrating strong performance while the target remained visible. However, after the plane re-emerged from behind the building, SAM2 failed to reacquire and segment the target for the remainder of the sequence. This result suggests that prolonged complete occlusions can present a challenge for the model, causing it to lose track of the target object and fail to recover once visibility is restored. 
+
+### Experiment 3 Results: 
+
+![SAM2 Experiment 3 Results](experiment3_grid.png)
 
 ## To run experiments
 
