@@ -125,9 +125,12 @@ python run_sam2_baseline.py \
   --output_dir results/dog_baseline
 ```
 
-If running on UCR GPU cluster, run the appropriate .slurm file with appropriate destinations 
+If running on UCR GPU cluster, submit the appropriate SLURM job script while inside the project directory. Refer to `.env_example` for the required environment setup and configuration to ensure scripts have correct accesses:
 
-# ** TODO MAKE THIS EASIER 2 USE!! ** 
+```bash
+cd EE243-Project
+sbatch experiments/jobs/run_sam2_[baseline/exp1/exp2/exp3].slurm
+```
 
 Generated masks and overlays will be saved to:
 
