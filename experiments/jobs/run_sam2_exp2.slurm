@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=sam2_baseline
+#SBATCH --job-name=sam2_exp2
 #SBATCH --output=experiments/logs/sam2_%j.out
 #SBATCH --error=experiments/logs/sam2_%j.err
 #SBATCH --partition=gpu
@@ -14,14 +14,14 @@ set +a
 
 mkdir -p ${PROJECT_ROOT}/experiments/logs
 
-mkdir -p results/baseline/masks
-mkdir -p results/baseline/overlays
+mkdir -p results/experiment2/masks
+mkdir -p results/experiment2/overlays
 
-rm -f results/baseline/masks/*
-rm -f results/baseline/overlays/*
+rm -f results/experiment2/masks/*
+rm -f results/experiment2/overlays/*
 
 ${SAM2_PYTHON} \
 experiments/scripts/test_sam2_baseline.py \
-  --video_dir experiments/input_frames/baseline \
-  --first_mask experiments/input_first_mask/baseline/first_mask.png \
-  --output_dir results/baseline
+  --video_dir experiments/input_frames/experiment2 \
+  --first_mask experiments/input_first_mask/experiment2/first_mask.png \
+  --output_dir results/experiment2

@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+import os
 import cv2
 import numpy as np
 import torch
@@ -14,9 +15,9 @@ def parse_args():
 
     parser.add_argument("--video_dir", type=str, required=True)
     parser.add_argument("--first_mask", type=str, required=True)
-    parser.add_argument("--output_dir", type=str, default="outputs_sam2")
+    parser.add_argument("--output_dir", type=str, default="results/baseline")
 
-    parser.add_argument("--checkpoint", type=str, default="./checkpoints/sam2.1_hiera_small.pt")
+    parser.add_argument("--checkpoint", type=str, default=os.environ["SAM2_CHECKPOINT"])
     parser.add_argument("--config", type=str, default="configs/sam2.1/sam2.1_hiera_s.yaml")
 
     return parser.parse_args()
