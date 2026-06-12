@@ -1,6 +1,40 @@
 # EE243-Project
 
-### To run experiments
+## Experiment Results
+
+### Baseline - DAVIS 2016
+
+Before experimenting with more challenging scenarios, we first tested SAM2 on the [DAVIS 2016](https://davischallenge.org/davis2016/code.html) dataset to establish a qualitative baseline for performance. The DAVIS benchmark is common and provides high-quality ground-truth annotations on a large set of framsets, making this a suitable choice for validating the pipeline and behavior of SAM2. Specifically, we selected the "dog" sequence and initialized SAM2 using the first-frame object mask. The resulting segmentations help serve as a reference point for quality in the further experiments. 
+
+Below are 9 frames, evenly spaces out across the 60-frame sequence, segmenting the dog from its scene: 
+
+[insert photo grid here]
+
+### Experiment 1 - Sensitivity to Initialization Noise
+
+While SAM2 demonstrates strong performance when provided with an accurate first-frame mask, real-world annotations are often imperfect. To evaluate the robustness of SAM2 to initialization errors, we introduced noise into the first-frame object mask before performing tracking. This experiment investigates whether small inaccuracies in the initial segmentation propagate throughout the sequence and degrade tracking performance over time.
+
+Test results show [...]
+
+[insert photo grid here again]
+
+### Experiment 2 - Sensitivity to Similar-Looking Objects
+
+The TED paper specifically argues that tracking visually similar objects is a challenging setting for many tracking methods, since appearance cues alone may be insufficient to maintain object identity. Although SAM2 performs strongly on video object segmentation tasks, we wanted to test how consistent it performs when the target object is surrounded by many visually similar distractors. This experiment stress-tests SAM2’s ability to preserve object identity when the scene contains multiple objects with nearly identical color, shape, and texture.
+
+Test results show [...]
+
+[insert photo grid here again]
+
+### Experiment 3 - Sensitivity to Occlusion
+
+In real videos, target objects are often partially or fully occluded by other objects. To evaluate SAM2 under this condition, we tested a sequence where the target object becomes temporarily hidden and later reappears. Several of the challenging examples presented by Zhang et al. involve visually similar objects interacting and partially occluding one another. In these scenarios, TED is able to maintain object identity by utilizing motion representations learned from video diffusion models. Motivated by these results, we test how well SAM2 handles a related challenge in which the target object becomes temporarily occluded before reappearing.
+
+Test results show [...]
+
+[insert photo grid here again]
+
+## To run experiments
 
 #### 1. Clone this repository
 
