@@ -84,6 +84,22 @@ If CUDA is available, install the optional CUDA extensions:
 pip install -e ".[notebooks]"
 ```
 
+After installing SAM2, download the model checkpoints:
+
+```bash
+cd checkpoints
+./download_ckpts.sh
+```
+
+This will download the official SAM2 checkpoints, including:
+
+```text
+sam2.1_hiera_tiny.pt
+sam2.1_hiera_small.pt
+sam2.1_hiera_base_plus.pt
+sam2.1_hiera_large.pt
+```
+
 #### 6. Install project dependencies
 
 Return to the project root directory:
