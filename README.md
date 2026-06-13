@@ -18,6 +18,8 @@ Test results show [...]
 
 [insert photo grid here again]
 
+![SAM2 With Noise (.05)](results/experiment1/noise_05_collage.png)
+
 ### Experiment 2 - Sensitivity to Similar-Looking Objects
 
 The TED paper specifically argues that tracking visually similar objects is a challenging setting for many tracking methods, since appearance cues alone may be insufficient to maintain object identity. Although SAM2 performs strongly on video object segmentation tasks, we wanted to test how consistent it performs when the target object is surrounded by many visually similar distractors. This experiment stress-tests SAM2’s ability to preserve object identity when the scene contains multiple objects with nearly identical color, shape, and texture.
