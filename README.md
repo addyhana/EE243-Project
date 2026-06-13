@@ -26,7 +26,6 @@ At 0.75 noise, SAM2 no longer tracks the full dog. Instead, it only highlights s
 
 Overall, the results show that SAM2 is fairly robust when the initial mask contains low levels of noise, such as 0.05 and 0.10 and .25. However, performance degrades sharply between 0.25 and 0.50 noise. Once the initial mask becomes too noisy, SAM2 loses the ability to track the object consistently across frames. This shows that the quality of the initial mask is important for reliable SAM2 image tracking, especially because errors in the first mask can propagate through the rest of the sequence, as mentioned above.
 
-[insert photo grid here again]
 
 ### Experiment 1 Results: 
 
