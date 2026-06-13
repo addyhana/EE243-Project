@@ -18,7 +18,31 @@ Test results show [...]
 
 [insert photo grid here again]
 
+### Experiment 1 Results: 
+
+SAM2 With Noise Mask (.05)
+
 ![SAM2 With Noise (.05)](results/experiment1/noise_05_collage.png)
+
+SAM2 With Noise Mask (.10)
+
+![SAM2 With Noise (.10)](results/experiment1/noise_10_collage.png)
+
+SAM2 With Noise Mask (.25)
+
+![SAM2 With Noise (.25)](results/experiment1/noise_25_collage.png)
+
+SAM2 With Noise Mask (.50)
+
+![SAM2 With Noise (.50)](results/experiment1/noise_50_collage.png)
+
+SAM2 With Noise Mask (.75)
+
+![SAM2 With Noise (.75)](results/experiment1/noise_75_collage.png)
+
+SAM2 With Noise Mask (.90)
+
+![SAM2 With Noise (.90)](results/experiment1/noise_90_collage.png)
 
 ### Experiment 2 - Sensitivity to Similar-Looking Objects
 
