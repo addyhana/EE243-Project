@@ -1,9 +1,5 @@
 # EE243-Project
 
-Video to overview: 
-
-https://youtu.be/qKajuECrM-Y
-
 ## Experiment Results
 
 ### Baseline - DAVIS 2016
